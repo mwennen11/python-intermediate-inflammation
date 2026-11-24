@@ -79,3 +79,11 @@ def patient_normalise(data):
     normalised[normalised < 0] = 0
     return normalised
 
+def standard_deviation(data: np.array):
+    """Computes and returns standard deviation for data."""
+    data_mean = np.mean(data, axis=0)
+    devs = []
+    for entry in data:
+        devs.append((entry - data_mean) * (entry - data_mean))
+    standard_deviation = sum(devs) / len(data)
+    return  standard_deviation

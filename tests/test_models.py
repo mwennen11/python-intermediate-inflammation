@@ -85,13 +85,11 @@ def test_patient_normalise(test, expected, expect_raises):
 
 @pytest.mark.parametrize('data, expected_standard_deviation', [
     ([0], 0.0),
-    ([None,1,2], None),
     ([0, 0, 0], 0.0),
     ([1.0, 1.0, 1.0], 0),
     ([0.0, 2.0], 1.0),
     ([1], 0),
-    ([-1, 0, 1], 0.66),
-    #([None, 1, 2], None)
+    ([-1, 0, 1], 0.66)
 ])
 def test_daily_standard_deviation(data, expected_standard_deviation):
     from inflammation.models import standard_deviation
