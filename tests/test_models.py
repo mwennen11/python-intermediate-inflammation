@@ -33,6 +33,8 @@ def test_daily_mean_integers():
 
 
 @pytest.mark.parametrize('data, expected_standard_deviation', [
+    ([0], 0.0),
+    ([None,1,2], None),
     ([0, 0, 0], 0.0),
     ([1.0, 1.0, 1.0], 0),
     ([0.0, 2.0], 1.0),
