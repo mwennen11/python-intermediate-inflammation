@@ -35,9 +35,12 @@ def test_daily_mean_integers():
 @pytest.mark.parametrize('data, expected_standard_deviation', [
     ([0, 0, 0], 0.0),
     ([1.0, 1.0, 1.0], 0),
-    ([0.0, 2.0], 1.0)
+    ([0.0, 2.0], 1.0),
+    ([1], 0),
+    ([-1, 0, 1], 0.66),
+    #([None, 1, 2], None)
 ])
 def test_daily_standard_deviation(data, expected_standard_deviation):
-    from inflammation.models import s_dev
-    result_data = s_dev(data)['standard deviation']
-    npt.assert_approx_equal(result_data, expected_standard_deviation)
+    from inflammation.models import standard_deviation
+    result_data = standard_deviation(data)
+    npt.assert_approx_equal(result_data, expected_standard_deviation, significant = 2)
